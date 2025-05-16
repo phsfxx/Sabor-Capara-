@@ -1,0 +1,400 @@
+/* Estilos responsivos */
+
+
+/* Telas muito grandes */
+
+@media screen and (min-width: 1600px) {
+    section {
+        max-width: 1600px;
+        padding: 5rem 5%;
+    }
+    .hero h1 {
+        font-size: 4.5rem;
+    }
+    .produtos-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 3rem;
+    }
+    .produto-card {
+        max-width: 400px;
+    }
+}
+
+
+/* Telas grandes */
+
+@media screen and (min-width: 1400px) and (max-width: 1599px) {
+    section {
+        max-width: 1400px;
+        padding: 4rem 4%;
+    }
+    .hero h1 {
+        font-size: 4rem;
+    }
+    .produtos-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 2.5rem;
+    }
+}
+
+
+/* Telas médias grandes */
+
+@media screen and (min-width: 1200px) and (max-width: 1399px) {
+    section {
+        max-width: 1200px;
+        padding: 3.5rem 3%;
+    }
+    .hero h1 {
+        font-size: 3.5rem;
+    }
+    .produtos-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+    }
+}
+
+
+/* Tablets grandes e desktops pequenos */
+
+@media screen and (min-width: 992px) and (max-width: 1199px) {
+    section {
+        max-width: 992px;
+        padding: 3rem 3%;
+    }
+    .hero h1 {
+        font-size: 3rem;
+    }
+    .produtos-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem;
+    }
+    .produto-card {
+        max-width: 300px;
+    }
+}
+
+
+/* Tablets */
+
+@media screen and (min-width: 768px) and (max-width: 991px) {
+    section {
+        max-width: 768px;
+        padding: 2.5rem 2%;
+    }
+    nav {
+        padding: 0.8rem 2%;
+    }
+    .hero {
+        height: 80vh;
+    }
+    .hero h1 {
+        font-size: 2.8rem;
+    }
+    .produtos-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+    .modal-content {
+        width: 80%;
+        max-width: 600px;
+    }
+}
+
+
+/* Tablets pequenos e celulares grandes */
+
+@media screen and (min-width: 576px) and (max-width: 767px) {
+    section {
+        max-width: 576px;
+        padding: 2rem 1.5%;
+    }
+    nav {
+        flex-direction: column;
+        padding: 1rem;
+    }
+    nav ul {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+        margin-top: 1rem;
+        width: 100%;
+    }
+    .hero {
+        height: 70vh;
+    }
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+    .produtos-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+    .produto-card {
+        max-width: 250px;
+    }
+    .modal-content {
+        width: 90%;
+        margin: 1rem auto;
+    }
+    .video-container {
+        width: 100%;
+        max-width: 100%;
+    }
+    .video-container video {
+        width: 100%;
+        height: auto;
+    }
+}
+
+
+/* Celulares */
+
+@media screen and (max-width: 575px) {
+    section {
+        padding: 1.5rem 1rem;
+    }
+    nav {
+        flex-direction: column;
+        padding: 0.8rem;
+    }
+    nav ul {
+        flex-direction: column;
+        text-align: center;
+        gap: 0.8rem;
+        margin-top: 0.8rem;
+    }
+    .hero {
+        height: 60vh;
+        padding: 0 1rem;
+    }
+    .hero h1 {
+        font-size: 2rem;
+        line-height: 1.2;
+    }
+    .hero p {
+        font-size: 1rem;
+        margin: 0.5rem 0;
+    }
+    .instagram-btn {
+        padding: 0.8rem 1.5rem;
+        font-size: 0.9rem;
+        margin-top: 1rem;
+    }
+    .produtos-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    .produto-card {
+        max-width: 100%;
+        margin: 0 auto;
+    }
+    .produto-info {
+        padding: 0.8rem;
+    }
+    .produto-info h3 {
+        font-size: 1.1rem;
+    }
+    .produto-info p {
+        font-size: 0.9rem;
+    }
+    .whatsapp-btn {
+        padding: 0.7rem;
+        font-size: 0.9rem;
+    }
+    .modal-content {
+        width: 95%;
+        margin: 0.5rem auto;
+        padding: 1rem;
+    }
+    .carrinho-item {
+        flex-direction: column;
+        gap: 0.5rem;
+        padding: 0.8rem 0;
+    }
+    .item-info h4 {
+        font-size: 1rem;
+    }
+    .item-controles {
+        width: 100%;
+        justify-content: space-between;
+    }
+    .item-controles button {
+        padding: 0.3rem 0.5rem;
+        font-size: 0.9rem;
+    }
+    .remover-btn {
+        font-size: 0.8rem;
+        padding: 0.3rem 0.6rem;
+    }
+    .contato form {
+        padding: 0;
+    }
+    .contato input,
+    .contato textarea {
+        font-size: 16px;
+        padding: 0.7rem;
+    }
+    .contato button {
+        padding: 0.8rem;
+        font-size: 0.9rem;
+    }
+}
+
+
+/* Celulares muito pequenos */
+
+@media screen and (max-width: 360px) {
+    .hero h1 {
+        font-size: 1.8rem;
+    }
+    .hero p {
+        font-size: 0.9rem;
+    }
+    .instagram-btn {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.8rem;
+    }
+    .produto-card {
+        max-width: 100%;
+    }
+    .produto-info h3 {
+        font-size: 1rem;
+    }
+    .produto-info p {
+        font-size: 0.8rem;
+    }
+    .whatsapp-btn {
+        font-size: 0.8rem;
+    }
+    .modal-content {
+        padding: 0.8rem;
+    }
+    .carrinho-item {
+        padding: 0.6rem 0;
+    }
+    .item-info h4 {
+        font-size: 0.9rem;
+    }
+    .item-controles button {
+        padding: 0.2rem 0.4rem;
+        font-size: 0.8rem;
+    }
+}
+
+
+/* Tablets e telas menores */
+
+@media screen and (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+    }
+    .menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 80%;
+        max-width: 300px;
+        height: 100vh;
+        background-color: white;
+        flex-direction: column;
+        padding: 80px 2rem 2rem;
+        box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+        transition: right 0.3s ease;
+    }
+    .menu.active {
+        right: 0;
+    }
+    .menu li {
+        margin: 1rem 0;
+    }
+    .menu a {
+        display: block;
+        padding: 0.5rem 0;
+        font-size: 1.1rem;
+    }
+    /* Animação do botão do menu */
+    .menu-toggle.active span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+    }
+    .menu-toggle.active span:nth-child(2) {
+        opacity: 0;
+    }
+    .menu-toggle.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(7px, -6px);
+    }
+    /* Overlay quando o menu está aberto */
+    .menu-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 1001;
+    }
+    .menu-overlay.active {
+        display: block;
+    }
+}
+
+
+/* Ajustes para telas médias */
+
+@media (max-width: 768px) {
+    .about-content {
+        grid-template-columns: 1fr;
+    }
+    .about-images {
+        grid-template-columns: 1fr;
+    }
+    .about-img {
+        height: 250px;
+    }
+    .process-images {
+        grid-template-columns: 1fr;
+    }
+    .process-img {
+        height: 250px;
+    }
+    .process-video {
+        padding: 0 20px;
+    }
+}
+
+
+/* Ajustes para telas pequenas */
+
+@media (max-width: 576px) {
+    .about-img {
+        height: 200px;
+    }
+    .process-img {
+        height: 200px;
+    }
+    .product-card img {
+        height: 200px;
+    }
+    .product-card h3 {
+        font-size: 1.2em;
+    }
+    .product-card .price {
+        font-size: 1.1em;
+    }
+}
+
+
+/* Ajustes para telas muito pequenas */
+
+@media (max-width: 360px) {
+    .about-img {
+        height: 180px;
+    }
+    .process-img {
+        height: 180px;
+    }
+    .product-card img {
+        height: 180px;
+    }
+}
