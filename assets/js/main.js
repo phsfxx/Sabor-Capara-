@@ -119,6 +119,16 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('summary-torra').textContent = torra;
         document.getElementById('summary-moagem').textContent = moagem;
         document.getElementById('summary-tamanho').textContent = tamanho;
+
+        // Atualiza o link do WhatsApp com as opções selecionadas
+        const whatsappBtn = document.querySelector('.custom-order-btn');
+        const mensagem = `Olá! Gostaria de fazer um pedido personalizado com as seguintes características:%0A%0A` +
+            `Torra: ${torra}%0A` +
+            `Moagem: ${moagem}%0A` +
+            `Tamanho: ${tamanho}%0A%0A` +
+            `Poderia me ajudar?`;
+
+        whatsappBtn.href = `https://wa.me/553398221439?text=${mensagem}`;
     }
 
     // Gerenciar seleção de opções
@@ -134,29 +144,6 @@ document.addEventListener('DOMContentLoaded', function() {
             // Atualiza o resumo
             updateSummary();
         });
-    });
-
-    // Gerenciar envio do formulário
-    customOrderForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-
-        // Coletar valores selecionados
-        const torra = this.querySelector('[aria-label="Selecione a torra"] .active').dataset.value;
-        const moagem = this.querySelector('[aria-label="Selecione a moagem"] .active').dataset.value;
-        const tamanho = this.querySelector('[aria-label="Selecione o tamanho"] .active').dataset.value;
-
-        // Construir mensagem
-        const mensagem = `Olá! Gostaria de pedir um café personalizado:\n\n` +
-            `📦 Tamanho: ${tamanho}\n` +
-            `🔥 Torra: ${torra}\n` +
-            `⚙️ Moagem: ${moagem}\n\n` +
-            `Por favor, me informe o valor e as formas de pagamento.`;
-
-        // Criar link do WhatsApp
-        const whatsappLink = `https://wa.me/553398221439?text=${encodeURIComponent(mensagem)}`;
-
-        // Abrir WhatsApp em nova aba
-        window.open(whatsappLink, '_blank');
     });
 
     // Inicializar o resumo
