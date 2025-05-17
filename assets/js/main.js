@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     menuToggle.addEventListener('click', function() {
         menu.classList.toggle('active');
+        menuToggle.classList.toggle('active');
         overlay.classList.toggle('active');
         document.body.classList.toggle('menu-open');
     });
@@ -18,6 +19,7 @@ document.addEventListener('DOMContentLoaded', function() {
     menuLinks.forEach(link => {
         link.addEventListener('click', () => {
             menu.classList.remove('active');
+            menuToggle.classList.remove('active');
             overlay.classList.remove('active');
             document.body.classList.remove('menu-open');
         });
@@ -26,6 +28,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Fechar menu ao clicar no overlay
     overlay.addEventListener('click', () => {
         menu.classList.remove('active');
+        menuToggle.classList.remove('active');
         overlay.classList.remove('active');
         document.body.classList.remove('menu-open');
     });
