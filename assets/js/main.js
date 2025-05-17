@@ -168,11 +168,13 @@ document.addEventListener('DOMContentLoaded', function() {
     const minimizeBtn = document.querySelector('.minimize-btn');
     const minimizeText = minimizeBtn.querySelector('.minimize-text');
     const customOrderContent = document.querySelector('.custom-order-content');
+    const customOrder = document.querySelector('.custom-order');
 
     if (minimizeBtn && customOrderContent) {
         minimizeBtn.addEventListener('click', function() {
             this.classList.toggle('minimized');
             customOrderContent.classList.toggle('minimized');
+            customOrder.classList.toggle('minimized');
 
             // Atualiza o texto do botão
             minimizeText.textContent = this.classList.contains('minimized') ? 'Expandir' : 'Minimizar';
@@ -187,6 +189,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (isMinimized) {
             minimizeBtn.classList.add('minimized');
             customOrderContent.classList.add('minimized');
+            customOrder.classList.add('minimized');
             minimizeText.textContent = 'Expandir';
         }
     }
