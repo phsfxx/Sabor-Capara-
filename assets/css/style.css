@@ -1020,12 +1020,12 @@ section:not(.hero) {
     background: rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(10px);
     border-radius: 20px;
-    padding: 3rem;
+    padding: clamp(1.5rem, 5vw, 3rem);
     margin-top: 4rem;
     border: 1px solid rgba(255, 255, 255, 0.1);
     position: relative;
-    padding-bottom: 7rem;
-    transition: padding-bottom 0.5s ease;
+    padding-bottom: clamp(6rem, 15vw, 8rem);
+    transition: all 0.3s ease;
 }
 
 .custom-order.minimized {
@@ -1160,8 +1160,9 @@ section:not(.hero) {
 .form-summary {
     background: rgba(255, 255, 255, 0.05);
     border-radius: 12px;
-    padding: 2rem;
+    padding: clamp(1.5rem, 4vw, 2rem);
     margin-top: 1rem;
+    margin-bottom: clamp(2rem, 5vw, 3rem);
 }
 
 .form-summary h4 {
@@ -1225,10 +1226,12 @@ section:not(.hero) {
 }
 
 .custom-order-btn {
-    position: relative;
-    margin: 2rem auto;
-    font-size: 1.2rem;
-    padding: 1.2rem;
+    position: absolute;
+    bottom: clamp(1.2rem, 3vw, 2rem);
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
+    padding: clamp(1rem, 2.5vw, 1.2rem);
     background: #25D366;
     border: none;
     border-radius: 12px;
@@ -1236,39 +1239,40 @@ section:not(.hero) {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 1rem;
+    gap: clamp(0.5rem, 1.5vw, 1rem);
     cursor: pointer;
     transition: all 0.3s ease;
-    width: calc(100% - 3rem);
+    width: calc(100% - clamp(1.6rem, 4vw, 3rem));
     max-width: 100%;
     white-space: normal;
     text-align: center;
     z-index: 2;
 }
 
-.custom-order-content.minimized~.custom-order-btn {
-    opacity: 0;
-    transform: translateY(-10px);
-    pointer-events: none;
+.custom-order-btn:hover {
+    transform: translateX(-50%) translateY(-2px);
+    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+}
+
+.custom-order-btn:active {
+    transform: translateX(-50%) translateY(0);
 }
 
 @media screen and (max-width: 768px) {
-    .custom-order-spacer {
-        height: 2.5rem;
+    .custom-order {
+        padding: clamp(1.2rem, 4vw, 2rem);
     }
-    .custom-order-btn {
-        margin: 1.5rem auto;
-        width: calc(100% - 2rem);
+    .form-summary {
+        padding: clamp(1.2rem, 3vw, 1.5rem);
     }
 }
 
 @media screen and (max-width: 480px) {
-    .custom-order-spacer {
-        height: 2rem;
+    .custom-order {
+        padding: clamp(1rem, 3vw, 1.5rem);
     }
-    .custom-order-btn {
-        margin: 1.2rem auto;
-        width: calc(100% - 1.6rem);
+    .form-summary {
+        padding: clamp(1rem, 2.5vw, 1.2rem);
     }
 }
 
@@ -1963,10 +1967,12 @@ p {
 }
 
 .custom-order-btn {
-    position: relative;
-    margin: 2rem auto;
-    font-size: 1.2rem;
-    padding: 1.2rem;
+    position: absolute;
+    bottom: clamp(1.2rem, 3vw, 2rem);
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
+    padding: clamp(1rem, 2.5vw, 1.2rem);
     background: #25D366;
     border: none;
     border-radius: 12px;
@@ -1974,39 +1980,40 @@ p {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 1rem;
+    gap: clamp(0.5rem, 1.5vw, 1rem);
     cursor: pointer;
     transition: all 0.3s ease;
-    width: calc(100% - 3rem);
+    width: calc(100% - clamp(1.6rem, 4vw, 3rem));
     max-width: 100%;
     white-space: normal;
     text-align: center;
     z-index: 2;
 }
 
-.custom-order-content.minimized~.custom-order-btn {
-    opacity: 0;
-    transform: translateY(-10px);
-    pointer-events: none;
+.custom-order-btn:hover {
+    transform: translateX(-50%) translateY(-2px);
+    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+}
+
+.custom-order-btn:active {
+    transform: translateX(-50%) translateY(0);
 }
 
 @media screen and (max-width: 768px) {
-    .custom-order-spacer {
-        height: 2.5rem;
+    .custom-order {
+        padding: clamp(1.2rem, 4vw, 2rem);
     }
-    .custom-order-btn {
-        margin: 1.5rem auto;
-        width: calc(100% - 2rem);
+    .form-summary {
+        padding: clamp(1.2rem, 3vw, 1.5rem);
     }
 }
 
 @media screen and (max-width: 480px) {
-    .custom-order-spacer {
-        height: 2rem;
+    .custom-order {
+        padding: clamp(1rem, 3vw, 1.5rem);
     }
-    .custom-order-btn {
-        margin: 1.2rem auto;
-        width: calc(100% - 1.6rem);
+    .form-summary {
+        padding: clamp(1rem, 2.5vw, 1.2rem);
     }
 }
 
