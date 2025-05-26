@@ -1,11 +1,37 @@
 // Controle do menu mobile
 document.addEventListener('DOMContentLoaded', function() {
+    // Verificação de compatibilidade do navegador
+    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+    const isInstagram = /Instagram/.test(navigator.userAgent);
+    const isFacebook = /FBAN|FBAV/.test(navigator.userAgent);
+
+    // Ajustes específicos para navegadores in-app
+    if (isIOS || isInstagram || isFacebook) {
+        document.body.classList.add('in-app-browser');
+
+        // Ajuste para evitar problemas de scroll em navegadores in-app
+        document.documentElement.style.webkitOverflowScrolling = 'touch';
+
+        // Ajuste para evitar zoom indesejado em inputs
+        const inputs = document.querySelectorAll('input, textarea');
+        inputs.forEach(input => {
+            input.style.fontSize = '16px'; // Evita zoom automático no iOS
+        });
+    }
+
     // Menu Mobile
     const menuToggle = document.querySelector('.menu-toggle');
     const menu = document.querySelector('.menu');
     const overlay = document.createElement('div');
     overlay.className = 'overlay';
     document.body.appendChild(overlay);
+
+    // Função para fechar o menu
+    function closeMenu() {
+        menu.classList.remove('active');
+        overlay.classList.remove('active');
+        document.body.classList.remove('menu-open');
+    }
 
     menuToggle.addEventListener('click', function() {
         menu.classList.toggle('active');
@@ -16,21 +42,13 @@ document.addEventListener('DOMContentLoaded', function() {
     // Fechar menu ao clicar em um link
     const menuLinks = document.querySelectorAll('.menu a');
     menuLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            menu.classList.remove('active');
-            overlay.classList.remove('active');
-            document.body.classList.remove('menu-open');
-        });
+        link.addEventListener('click', closeMenu);
     });
 
     // Fechar menu ao clicar no overlay
-    overlay.addEventListener('click', () => {
-        menu.classList.remove('active');
-        overlay.classList.remove('active');
-        document.body.classList.remove('menu-open');
-    });
+    overlay.addEventListener('click', closeMenu);
 
-    // Scroll suave para links internos
+    // Scroll suave para links internos com fallback
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             e.preventDefault();
@@ -40,10 +58,16 @@ document.addEventListener('DOMContentLoaded', function() {
                 const elementPosition = target.getBoundingClientRect().top;
                 const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
 
-                window.scrollTo({
-                    top: offsetPosition,
-                    behavior: 'smooth'
-                });
+                // Verifica se o navegador suporta scroll suave
+                if ('scrollBehavior' in document.documentElement.style) {
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                } else {
+                    // Fallback para navegadores que não suportam scroll suave
+                    window.scrollTo(0, offsetPosition);
+                }
             }
         });
     });
@@ -57,15 +81,19 @@ document.addEventListener('DOMContentLoaded', function() {
                 const elementPosition = target.getBoundingClientRect().top;
                 const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
 
-                window.scrollTo({
-                    top: offsetPosition,
-                    behavior: 'smooth'
-                });
+                if ('scrollBehavior' in document.documentElement.style) {
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                } else {
+                    window.scrollTo(0, offsetPosition);
+                }
             }, 100);
         }
     }
 
-    // Animação de scroll
+    // Animação de scroll com fallback
     const animateOnScroll = function() {
         const elements = document.querySelectorAll('.feature-card, .product-card, .about-content');
         elements.forEach(element => {
@@ -79,7 +107,16 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     };
 
-    window.addEventListener('scroll', animateOnScroll);
+    // Otimização do evento de scroll
+    let scrollTimeout;
+    window.addEventListener('scroll', function() {
+        if (!scrollTimeout) {
+            scrollTimeout = setTimeout(function() {
+                animateOnScroll();
+                scrollTimeout = null;
+            }, 100);
+        }
+    });
     animateOnScroll(); // Executar uma vez ao carregar a página
 });
 

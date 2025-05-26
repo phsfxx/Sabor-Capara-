@@ -2233,3 +2233,58 @@ p {
         padding: 0.9rem 2rem;
     }
 }
+
+
+/* Ajustes para navegadores in-app */
+
+.product-card,
+.custom-order,
+.founder-card {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    will-change: transform;
+}
+
+.product-image img,
+.packaging-image img {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+
+.product-grid,
+.custom-order-content {
+    -webkit-overflow-scrolling: touch;
+    overflow-y: auto;
+}
+
+
+/* Ajustes para Safari e navegadores iOS */
+
+@supports (-webkit-touch-callout: none) {
+    .product-card,
+    .custom-order,
+    .founder-card {
+        -webkit-transform: translateZ(0);
+        transform: translateZ(0);
+    }
+    .product-image img,
+    .packaging-image img {
+        -webkit-transform: translateZ(0);
+        transform: translateZ(0);
+    }
+}
+
+
+/* Ajustes para navegadores in-app do Instagram e Facebook */
+
+@supports (-webkit-overflow-scrolling: touch) {
+    .product-grid,
+    .custom-order-content {
+        -webkit-overflow-scrolling: touch;
+        overflow-y: auto;
+    }
+}
