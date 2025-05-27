@@ -37,6 +37,7 @@
                 <li><a href="#sobre">Sobre</a></li>
                 <li><a href="#produtos">Produtos</a></li>
                 <li><a href="#contato">Contato</a></li>
+                <li><a href="#" id="revendedorLink">Seja Revendedor</a></li>
             </ul>
             <button class="menu-toggle" aria-label="Menu">
                 <span></span>
@@ -165,69 +166,88 @@
                     <div class="custom-order-content">
                         <form id="customOrderForm" class="custom-order-form">
                             <div class="form-group">
-                                <label for="torra">
-                                    <span class="icon">🔥</span>
-                                    Torra:
-                                </label>
-                                <div class="option-buttons" role="group" aria-label="Selecione a torra">
-                                    <button type="button" class="option-btn" data-value="Clara">
-                                        <span class="option-icon">🟡</span>
-                                        <span class="option-text">Clara</span>
-                                        <span class="option-desc">Sabor mais suave e acidez pronunciada</span>
-                                    </button>
-                                    <button type="button" class="option-btn active" data-value="Média">
-                                        <span class="option-icon">🟤</span>
-                                        <span class="option-text">Média</span>
-                                        <span class="option-desc">Equilíbrio entre doçura e acidez</span>
-                                    </button>
-                                    <button type="button" class="option-btn" data-value="Escura">
-                                        <span class="option-icon">⚫</span>
-                                        <span class="option-text">Escura</span>
-                                        <span class="option-desc">Sabor mais intenso e corpo encorpado</span>
-                                    </button>
-                                </div>
+                                <fieldset>
+                                    <legend>
+                                        <span class="icon">🔥</span> Torra:
+                                    </legend>
+                                    <div class="option-buttons" role="group" aria-label="Selecione a torra">
+                                        <button type="button" class="option-btn" data-value="Clara" aria-label="Torra Clara">
+                                            <span class="option-icon">🟡</span>
+                                            <span class="option-text">Clara</span>
+                                            <span class="option-desc">Sabor mais suave e acidez pronunciada</span>
+                                        </button>
+                                        <button type="button" class="option-btn active" data-value="Média" aria-label="Torra Média">
+                                            <span class="option-icon">🟤</span>
+                                            <span class="option-text">Média</span>
+                                            <span class="option-desc">Equilíbrio entre doçura e acidez</span>
+                                        </button>
+                                        <button type="button" class="option-btn" data-value="Escura" aria-label="Torra Escura">
+                                            <span class="option-icon">⚫</span>
+                                            <span class="option-text">Escura</span>
+                                            <span class="option-desc">Sabor mais intenso e corpo encorpado</span>
+                                        </button>
+                                    </div>
+                                </fieldset>
                             </div>
 
                             <div class="form-group">
-                                <label for="moagem">
-                                    <span class="icon">⚙️</span>
-                                    Moagem:
-                                </label>
-                                <div class="option-buttons" role="group" aria-label="Selecione a moagem">
-                                    <button type="button" class="option-btn" data-value="Grãos">
-                                        <span class="option-icon">🌰</span>
-                                        <span class="option-text">Grãos</span>
-                                        <span class="option-desc">Preserva o aroma e sabor por mais tempo</span>
-                                    </button>
-                                    <button type="button" class="option-btn active" data-value="Média (coador)">
-                                        <span class="option-icon">☕</span>
-                                        <span class="option-text">Média (coador)</span>
-                                        <span class="option-desc">Ideal para coador de pano ou papel</span>
-                                    </button>
-                                    <button type="button" class="option-btn" data-value="Prensa francesa">
-                                        <span class="option-icon">🫖</span>
-                                        <span class="option-text">Prensa francesa</span>
-                                        <span class="option-desc">Moagem grossa para extração completa</span>
-                                    </button>
-                                </div>
+                                <fieldset>
+                                    <legend>
+                                        <span class="icon">⚙️</span> Moagem:
+                                    </legend>
+                                    <div class="option-buttons" role="group" aria-label="Selecione a moagem">
+                                        <button type="button" class="option-btn" data-value="Grãos" aria-label="Moagem em Grãos">
+                                            <span class="option-icon">🌰</span>
+                                            <span class="option-text">Grãos</span>
+                                            <span class="option-desc">Preserva o aroma e sabor por mais tempo</span>
+                                        </button>
+                                        <button type="button" class="option-btn active" data-value="Média (coador)" aria-label="Moagem Média para Coador">
+                                            <span class="option-icon">☕</span>
+                                            <span class="option-text">Média (coador)</span>
+                                            <span class="option-desc">Ideal para coador de pano ou papel</span>
+                                        </button>
+                                        <button type="button" class="option-btn" data-value="Prensa francesa" aria-label="Moagem para Prensa Francesa">
+                                            <span class="option-icon">🫖</span>
+                                            <span class="option-text">Prensa francesa</span>
+                                            <span class="option-desc">Moagem grossa para extração completa</span>
+                                        </button>
+                                    </div>
+                                </fieldset>
                             </div>
 
                             <div class="form-group">
-                                <label for="tamanho">
-                                    <span class="icon">📦</span>
-                                    Tamanho:
-                                </label>
-                                <div class="option-buttons" role="group" aria-label="Selecione o tamanho">
-                                    <button type="button" class="option-btn" data-value="1 Kg">
-                                        <span class="option-icon">🏠</span>
-                                        <span class="option-text">1 Kg</span>
-                                        <span class="option-desc">Ideal para consumo familiar</span>
-                                    </button>
-                                    <button type="button" class="option-btn active" data-value="500g">
-                                        <span class="option-icon">👨‍👩‍👧‍👦</span>
-                                        <span class="option-text">500g</span>
-                                        <span class="option-desc">Perfeito para consumo individual</span>
-                                    </button>
+                                <fieldset>
+                                    <legend>
+                                        <span class="icon">📦</span> Tamanho:
+                                    </legend>
+                                    <div class="option-buttons" role="group" aria-label="Selecione o tamanho">
+                                        <button type="button" class="option-btn" data-value="1 Kg" aria-label="Tamanho 1 Kg">
+                                            <span class="option-icon">🏠</span>
+                                            <span class="option-text">1 Kg</span>
+                                            <span class="option-desc">Ideal para consumo familiar</span>
+                                        </button>
+                                        <button type="button" class="option-btn active" data-value="500g" aria-label="Tamanho 500g">
+                                            <span class="option-icon">👨‍👩‍👧‍👦</span>
+                                            <span class="option-text">500g</span>
+                                            <span class="option-desc">Perfeito para consumo individual</span>
+                                        </button>
+                                    </div>
+                                </fieldset>
+                            </div>
+
+                            <div class="form-group">
+                                <legend id="modalidade-label"><i class="fas fa-store"></i> Pagamento</legend>
+                                <div class="radio-group" role="radiogroup" aria-labelledby="modalidade-label">
+                                    <label class="radio-label">
+                                        <input type="radio" name="modalidade" value="condicional-vista" required>
+                                        <span>À Vista</span>
+                                        <small>Pagamento no ato da compra</small>
+                                    </label>
+                                    <label class="radio-label">
+                                        <input type="radio" name="modalidade" value="condicional-prazo" required>
+                                        <span>A Prazo</span>
+                                        <small>Pagamento em até 30 dias</small>
+                                    </label>
                                 </div>
                             </div>
 
@@ -251,7 +271,8 @@
                         </form>
                     </div>
                     <div class="custom-order-spacer"></div>
-                    <a href="https://wa.me/553398221439?text=Ol%C3%A1!%20Vi%20o%20site%20do%20Sabor%20Capara%C3%B3%20e%20gostaria%20de%20saber%20mais%20sobre%20os%20produtos.%20Poderia%20me%20ajudar?" class="btn-whatsapp custom-order-btn" target="_blank" rel="noopener">
+                    <a href="https://wa.me/553398221439?text=Ol%C3%A1!%20Vi%20o%20site%20do%20Sabor%20Capara%C3%B3%20e%20gostaria%20de%20fazer%20um%20pedido%20personalizado:%0A%0ATorra:%20%7Btorra%7D%0AMoagem:%20%7Bmoagem%7D%0ATamanho:%20%7Btamanho%7D%0AModalidade:%20%7Bmodalidade%7D%0A%0APoderia%20me%20ajudar?"
+                        class="btn-whatsapp custom-order-btn" target="_blank" rel="noopener">
                         <span>Enviar Pedido via WhatsApp</span>
                         <span class="whatsapp-icon">📱</span>
                     </a>
@@ -373,6 +394,75 @@
     <script src="assets/js/carrinho.js"></script>
     <script src="assets/js/whatsapp.js"></script>
     <script src="assets/js/main.js"></script>
+
+    <!-- Modal de Cadastro de Revendedores -->
+    <div id="revendedorModal" class="modal" role="dialog" aria-labelledby="modalTitle" aria-modal="true">
+        <div class="modal-content">
+            <button class="close-modal" aria-label="Fechar modal">&times;</button>
+            <h2 id="modalTitle">Seja Revendedor</h2>
+            <form id="revendedorForm" class="revendedor-form">
+                <div class="form-group">
+                    <label for="nome-revendedor">Nome Completo</label>
+                    <input type="text" id="nome-revendedor" name="nome" required placeholder="Digite seu nome completo" autocomplete="name">
+                </div>
+
+                <div class="form-group">
+                    <label for="email-revendedor">Email</label>
+                    <input type="email" id="email-revendedor" name="email" required placeholder="Digite seu email" autocomplete="email">
+                </div>
+
+                <div class="form-group">
+                    <label for="telefone-revendedor">Telefone</label>
+                    <input type="tel" id="telefone-revendedor" name="telefone" required placeholder="Digite seu telefone" autocomplete="tel">
+                </div>
+
+                <div class="form-group">
+                    <label for="documento-revendedor">CPF/CNPJ</label>
+                    <input type="text" id="documento-revendedor" name="documento" required placeholder="Digite seu CPF ou CNPJ" autocomplete="off">
+                </div>
+
+                <div class="form-group">
+                    <label for="cidade-revendedor">Cidade</label>
+                    <input type="text" id="cidade-revendedor" name="cidade" required placeholder="Digite sua cidade" autocomplete="address-level2">
+                </div>
+
+                <div class="form-group">
+                    <label for="estado-revendedor">Estado</label>
+                    <input type="text" id="estado-revendedor" name="estado" required placeholder="Digite seu estado" autocomplete="address-level1">
+                </div>
+
+                <div class="form-group">
+                    <label for="mensagem-revendedor">Mensagem</label>
+                    <textarea id="mensagem-revendedor" name="mensagem" required placeholder="Conte-nos um pouco sobre você e seu interesse em revender nossos produtos" autocomplete="off"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <legend id="modalidade-label"><i class="fas fa-store"></i> Pagamento</legend>
+                    <div class="radio-group" role="radiogroup" aria-labelledby="modalidade-label">
+                        <label class="radio-label">
+                            <input type="radio" name="modalidade" value="condicional-vista" required>
+                            <span>À Vista</span>
+                            <small>Pagamento no ato da compra</small>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="modalidade" value="condicional-prazo" required>
+                            <span>A Prazo</span>
+                            <small>Pagamento em até 30 dias</small>
+                        </label>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-submit" aria-label="Enviar Cadastro">
+                    <i class="fas fa-paper-plane" aria-hidden="true"></i>
+                    Enviar
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+    <script src="assets/js/script.js"></script>
 </body>
 
 </html>

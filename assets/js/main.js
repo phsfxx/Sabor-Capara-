@@ -52,7 +52,11 @@ document.addEventListener('DOMContentLoaded', function() {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
+            const href = this.getAttribute('href');
+            // Ignora links com href="#"
+            if (href === '#') return;
+
+            const target = document.querySelector(href);
             if (target) {
                 const headerOffset = 80;
                 const elementPosition = target.getBoundingClientRect().top;
@@ -130,9 +134,11 @@ document.addEventListener('DOMContentLoaded', function() {
             const nome = this.querySelector('input[type="text"]').value;
             const email = this.querySelector('input[type="email"]').value;
             const mensagem = this.querySelector('textarea').value;
+            const modalidadeInput = this.querySelector('input[name="modalidade"]:checked');
+            const modalidade = modalidadeInput ? modalidadeInput.value : 'não especificada';
 
             // Aqui você pode adicionar a lógica para enviar o email
-            const mailtoLink = `mailto:saborcaparao@gmail.com?subject=Contato via Site&body=Nome: ${nome}%0D%0AEmail: ${email}%0D%0AMensagem: ${mensagem}`;
+            const mailtoLink = `mailto:saborcaparao@gmail.com?subject=Contato via Site - Modalidade: ${modalidade}&body=Nome: ${nome}%0D%0AEmail: ${email}%0D%0AModalidade: ${modalidade}%0D%0AMensagem: ${mensagem}`;
             window.location.href = mailtoLink;
 
             // Limpar o formulário
@@ -142,48 +148,78 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-// Gerenciamento do formulário de pedido personalizado
-document.addEventListener('DOMContentLoaded', function() {
-    const customOrderForm = document.getElementById('customOrderForm');
-    const optionButtons = document.querySelectorAll('.option-btn');
+// Função para atualizar o resumo do pedido
+function updateSummary() {
+    const torraElement = document.getElementById('summary-torra');
+    const moagemElement = document.getElementById('summary-moagem');
+    const tamanhoElement = document.getElementById('summary-tamanho');
+    const modalidadeRadio = document.querySelector('input[name="modalidade"]:checked');
+    const whatsappLink = document.querySelector('.custom-order-btn');
 
-    // Função para atualizar o resumo
-    function updateSummary() {
-        const torra = document.querySelector('[aria-label="Selecione a torra"] .active').dataset.value;
-        const moagem = document.querySelector('[aria-label="Selecione a moagem"] .active').dataset.value;
-        const tamanho = document.querySelector('[aria-label="Selecione o tamanho"] .active').dataset.value;
-
-        document.getElementById('summary-torra').textContent = torra;
-        document.getElementById('summary-moagem').textContent = moagem;
-        document.getElementById('summary-tamanho').textContent = tamanho;
-
-        // Atualiza o link do WhatsApp com as opções selecionadas
-        const whatsappBtn = document.querySelector('.custom-order-btn');
-        const mensagem = `Olá! Gostaria de fazer um pedido personalizado com as seguintes características:%0A%0A` +
-            `Torra: ${torra}%0A` +
-            `Moagem: ${moagem}%0A` +
-            `Tamanho: ${tamanho}%0A%0A` +
-            `Poderia me ajudar?`;
-
-        whatsappBtn.href = `https://wa.me/553398221439?text=${mensagem}`;
+    // Se algum elemento não existir, retornar sem fazer nada
+    if (!torraElement || !moagemElement || !tamanhoElement || !whatsappLink) {
+        return;
     }
 
-    // Gerenciar seleção de opções
-    optionButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            // Remove a classe active de todos os botões do mesmo grupo
-            const group = this.closest('.option-buttons');
-            group.querySelectorAll('.option-btn').forEach(btn => {
-                btn.classList.remove('active');
-            });
-            // Adiciona a classe active ao botão clicado
-            this.classList.add('active');
-            // Atualiza o resumo
-            updateSummary();
-        });
-    });
+    // Obtém os valores selecionados
+    const torraSelecionada = document.querySelector('[aria-label="Selecione a torra"] .option-btn.active');
+    const moagemSelecionada = document.querySelector('[aria-label="Selecione a moagem"] .option-btn.active');
+    const tamanhoSelecionado = document.querySelector('[aria-label="Selecione o tamanho"] .option-btn.active');
 
-    // Inicializar o resumo
+    // Atualiza os elementos de resumo
+    if (torraSelecionada) {
+        torraElement.textContent = torraSelecionada.dataset.value;
+    }
+    if (moagemSelecionada) {
+        moagemElement.textContent = moagemSelecionada.dataset.value;
+    }
+    if (tamanhoSelecionado) {
+        tamanhoElement.textContent = tamanhoSelecionado.dataset.value;
+    }
+
+    // Obtém a modalidade de pagamento
+    const modalidade = modalidadeRadio ? (modalidadeRadio.value === 'vista' ? 'À Vista' : 'A Prazo') : '';
+
+    const message = `Olá! Vi o site do Sabor Caparaó e gostaria de fazer um pedido personalizado:
+
+Torra: ${torraElement.textContent}
+Moagem: ${moagemElement.textContent}
+Tamanho: ${tamanhoElement.textContent}
+Pagamento: ${modalidade}
+
+Poderia me ajudar?`;
+
+    whatsappLink.href = `https://wa.me/553398221439?text=${encodeURIComponent(message)}`;
+}
+
+// Event listeners para as opções
+document.addEventListener('DOMContentLoaded', function() {
+    const optionButtons = document.querySelectorAll('.option-btn');
+    if (optionButtons.length > 0) {
+        optionButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                // Remove a classe active de todos os botões do mesmo grupo
+                const group = this.closest('.option-buttons');
+                group.querySelectorAll('.option-btn').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                // Adiciona a classe active ao botão clicado
+                this.classList.add('active');
+                // Atualiza o resumo
+                updateSummary();
+            });
+        });
+    }
+
+    // Event listener para a modalidade de pagamento
+    const modalidadeRadios = document.querySelectorAll('input[name="modalidade"]');
+    if (modalidadeRadios.length > 0) {
+        modalidadeRadios.forEach(radio => {
+            radio.addEventListener('change', updateSummary);
+        });
+    }
+
+    // Atualiza o link inicialmente
     updateSummary();
 });
 
